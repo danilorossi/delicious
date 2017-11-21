@@ -56,3 +56,32 @@ exports.register = async (req, res, next) => {
   await register(user, req.body.password); // will store the hash
   next(); // pass to login
 }
+
+exports.account = (req, res) => {
+  res.render('account', { title: 'Edit Your Account' });
+}
+
+// NOTE validate!
+exports.updateAccount = async (req, res) => {
+
+  const updates = {
+    name: req.body.name,
+    email: req.body.email
+  };
+
+  const user = await User.findOneAndUpdate(
+    // query
+    { _id: req.user._id },
+    // updates
+    { $set: updates },
+    // options
+    {
+      new: true, // return the new user
+      runValidators: true,
+      context: 'query' // required
+     }
+  )
+  req.flash('success', 'Profile updated!');
+  res.redirect('back'); // or res.redirect('/account')
+  // TODO on edit account, if we change the email, we are not recognized as logged in users
+}
