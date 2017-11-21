@@ -82,6 +82,7 @@ exports.updateAccount = async (req, res) => {
      }
   )
   req.flash('success', 'Profile updated!');
+  req.login(user); // re authenticate if email changes
   res.redirect('back'); // or res.redirect('/account')
-  // TODO on edit account, if we change the email, we are not recognized as logged in users
+
 }

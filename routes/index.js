@@ -49,5 +49,11 @@ router.get('/account',
   userController.account
 );
 router.post('/account', catchErrors(userController.updateAccount));
+router.post('/account/forgot', catchErrors(authController.forgot));
+router.get('/account/reset/:token', catchErrors(authController.reset));
+router.post('/account/reset/:token',
+  authController.confirmedPassword, // same passwords and password-confirm
+  catchErrors(authController.update) // save the new password
+);
 
 module.exports = router;
