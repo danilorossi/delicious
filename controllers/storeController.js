@@ -66,11 +66,17 @@ exports.getStores = async (req, res) => {
   res.render('stores', { title: 'Stores', stores });
 }
 
+
+const confirmOwner = (store, user) => {
+  if (!store.author.equals(user._id)) { // || user.level < 10 etc.
+    throw Error('You must own a store in order to edit it!');
+  }
+}
 exports.editStore = async (req, res) => {
   // find the store given the id
   const store = await Store.findOne({ _id: req.params.id });
   // confirm they are the owner of the stores
-  // TODO
+  confirmOwner(store, req.user);
   // render out the edit form
   res.render('editStore', { title: `Edit ${store.name}`, store })
 }
