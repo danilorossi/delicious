@@ -1,13 +1,32 @@
 ## What is this?
 
-Just you wait folks!
+This is the project built while following the [Learn Node](https://learnnode.com/) course from Wes Bos (still Work In Progress).
+
+## Main features
+
+This paragraph will be update with a detailed list of features.
+
+The main ones are:
+
+* Authentication (User register, lost password flow with email, user data management)
+* Geolocation (Store gelocation with google)
+* Persistence (MongoDB)
+
+## Tech stack
+
+This paragraph will be update with a detailed tech stack.
+
+Main technologies are:
+
+* NodeJS with Express, PUB (ex Jade) as the templating engine
+* MongoDB for the persistence layer
 
 ## Sample Data
 
 To load sample data, run the following command in your terminal:
 
 ```bash
-npm run sample
+npm run sample 
 ```
 
 If you have previously loaded in this data, you can wipe your database 100% clean with:
