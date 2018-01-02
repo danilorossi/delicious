@@ -56,4 +56,9 @@ router.post('/account/reset/:token',
   catchErrors(authController.update) // save the new password
 );
 
+/*
+  APIs
+*/
+
+router.get('/api/search', catchErrors(storeController.searchStores));
 module.exports = router;
