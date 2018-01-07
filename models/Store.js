@@ -49,6 +49,12 @@ storeSchema.index({
   description: 'text'
 });
 
+storeSchema.index({
+  location: '2dsphere'
+});
+
+// TODO sanitize presave
+
 storeSchema.pre('save', async function(next) {
   // no arrow func, we need THIS
   if(!this.isModified('name')) {
