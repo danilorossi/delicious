@@ -56,6 +56,8 @@ router.post('/account/reset/:token',
   catchErrors(authController.update) // save the new password
 );
 
+router.get('/map', storeController.mapPage);
+
 /*
   APIs
 */

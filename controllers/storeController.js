@@ -119,7 +119,7 @@ exports.searchStores = async (req, res) => {
   })
   // limit to 5 results
   .limit(5);
-
+  console.log('> limiting to top 5 results');
   res.json(stores);
 }
 
@@ -139,6 +139,10 @@ exports.mapStores = async (req, res) => {
   };
 
   console.log('> limiting to top 10 results');
-  const stores = await Store.find(q).select('slug name description location').limit(10);
+  const stores = await Store.find(q).select('slug name description location photo').limit(10);
   res.json(stores);
+}
+
+exports.mapPage = (req, res) => {
+  res.render('map', { title: 'Map' });
 }
