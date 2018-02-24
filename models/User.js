@@ -22,7 +22,10 @@ const userSchema = new Schema({
     trim: true
   },
   resetPasswordToken: String,
-  resetPasswordExpires: Date
+  resetPasswordExpires: Date,
+  hearts: [
+    { type: mongoose.Schema.ObjectId, ref: 'Store' }
+  ]
 
 });
 
@@ -30,6 +33,7 @@ userSchema.virtual('gravatar').get(function() {
   const hash = md5(this.email);
   return `http://gravatar.com/avatar/${hash}?s=200`;
 });
+
 
 // add fields and/or methods needed for authentication
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
